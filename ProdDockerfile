@@ -1,0 +1,6 @@
+# Production environment (alias: base)
+FROM golang:alpine as base
+RUN apk update && apk upgrade && \
+apk add --no-cache bash git openssh
+WORKDIR /go/src
+
