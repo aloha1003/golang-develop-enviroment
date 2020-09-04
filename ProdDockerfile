@@ -1,8 +1,14 @@
 # Production environment (alias: base)
-FROM golang:alpine as base
+# build stage
+FROM golang:alpine AS build-env
+# 這裡要 git clone 
 RUN apk update && apk upgrade && \
 apk add --no-cache bash git openssh
 WORKDIR /go/src
+# 這裡要 clone 專案
+# RUN git clone 專案網址 .
+RUN go build -o app
+
 
 FROM alpine as dev
 COPY --from=base  /go/src /go/src
