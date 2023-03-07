@@ -1,5 +1,5 @@
 # Production environment (alias: base)
-FROM golang:1.15-alpine as base
+FROM golang:alpine3.17 as base
 RUN apk update && apk upgrade && \
 apk add --no-cache bash git openssh
 WORKDIR /go/src/codes
